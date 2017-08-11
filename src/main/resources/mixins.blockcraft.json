@@ -1,0 +1,14 @@
+{
+    "required": true,
+    "minVersion": "0.5.1",
+    "package": "com.me4502.blockcraft.mixin",
+    "refmap": "mixins.blockcraft.refmap.json",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+    ],
+    "client": [
+        "MixinPlayerControllerMP",
+        "MixinKeyBinding",
+        "MixinNetworkManager"
+    ]
+}
