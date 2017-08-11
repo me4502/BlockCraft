@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @IFMLLoadingPlugin.Name(value = "BlockCraftCore")
 public class BlockCraftCore implements IFMLLoadingPlugin {
 
-    private BlockCraftCore() {
+    public BlockCraftCore() {
         MixinBootstrap.init();
 
         try {
