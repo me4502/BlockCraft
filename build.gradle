@@ -16,12 +16,17 @@ buildscript {
     }
 }
 
-apply plugin: "net.minecraftforge.gradle.forge"
+apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 
 version = modVersion
 group = modGroup
 archivesBaseName = modBaseName
+
+configurations {
+    shade
+    compile.extendsFrom shade
+}
 
 minecraft {
     version = project.forgeVersion
@@ -36,8 +41,10 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
-mixin {
-    add sourceSets.main, "mixins.blockcraft.refmap.json"
+sourceSets {
+    main {
+        refMap = "mixins.blockcraft.refmap.json"
+    }
 }
 
 repositories {
@@ -49,7 +56,29 @@ repositories {
 }
 
 dependencies {
-    compile 'org.spongepowered:mixin:0.7.1-SNAPSHOT'
+    shade('org.spongepowered:mixin:0.7.1-SNAPSHOT') {
+        exclude module: 'launchwrapper'
+        exclude module: 'guava'
+    }
+}
+
+jar {
+    classifier = ""
+    manifest {
+        attributes(
+                'FMLCorePlugin': 'com.me4502.blockcraft.BlockCraftCore',
+                'ForceLoadAsMod': 'true',
+                'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+                'TweakOrder': '0',
+                'FMLAT': 'blockcraft_at.cfg'
+        )
+    }
+
+    configurations.shade.each { dep ->
+        from(project.zipTree(dep)){
+            exclude 'META-INF', 'META-INF/**'
+        }
+    }
 }
 
 processResources {
