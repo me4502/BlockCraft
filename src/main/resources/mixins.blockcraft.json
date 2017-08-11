@@ -7,8 +7,8 @@
     "mixins": [
     ],
     "client": [
-        "MixinPlayerControllerMP",
-        "MixinKeyBinding",
-        "MixinNetworkManager"
+    ],
+    "server": [
+        "MixinChunk"
     ]
 }

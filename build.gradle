@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.spongepowered:mixin:0.6.6-SNAPSHOT'
+    compile 'org.spongepowered:mixin:0.6.10-SNAPSHOT'
 }
 
 processResources {
