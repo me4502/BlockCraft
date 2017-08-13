@@ -4,12 +4,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 
 public class BlockData {
-    private String worldName;
-    private BlockPos blockPos;
-    private IBlockState blockState;
+    public BlockPos blockPos;
+    public IBlockState blockState;
 
-    public BlockData(String worldName, BlockPos blockPos, IBlockState blockState) {
-        this.worldName = worldName;
+    public BlockData(BlockPos blockPos, IBlockState blockState) {
         this.blockPos = blockPos;
         this.blockState = blockState;
     }

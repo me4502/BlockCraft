@@ -60,6 +60,8 @@ dependencies {
         exclude module: 'launchwrapper'
         exclude module: 'guava'
     }
+
+
 }
 
 jar {
